@@ -1,16 +1,37 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-
-
+import { View, Text, TextInput, Button, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import ShowProfile from '../services/ShowProfile';
 
 const Authentificationpage: React.FC = () => {
+
+
+    const [state, setState] = useState({
+        email: '',
+        password: '',
+    })
+
     return (
         <View>
-            <Text>
-                Auth Page
-            </Text>
+            <TextInput
+                style={{ height: 40 }}
+                placeholder="Email"
+                onChangeText={(text) => setState({...state, email: text })}
+            />
+            <TextInput
+                style={{ height: 40 }}
+                placeholder="Password"
+                onChangeText={(text) => setState({...state, password: text })}
+            />
+
+            <Button
+                title="Login"
+                onPress={() => ShowProfile.signIn(email, password)}
+            />
         </View>
     );
+
+    ;
+
 };
 
 export default Authentificationpage;
