@@ -37,8 +37,6 @@ const MainComponent = () => {
                             </View>
                         )
                     }
-
-
                 },
             })}
             >

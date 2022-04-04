@@ -25,7 +25,7 @@ const Authentificationpage: React.FC = () => {
 
             <Button
                 title="Login"
-                onPress={() => ShowProfile.signIn(email, password)}
+                onPress={() => ShowProfile.signIn(state.email, state.password)}
             />
         </View>
     );
