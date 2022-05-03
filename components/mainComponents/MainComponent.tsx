@@ -5,12 +5,16 @@ import { Text, View } from 'react-native';
 import { Homepage } from '../pages';
 import Authentificationpage from '../pages/Authentificationpage';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCoffee, faHome, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { createStackNavigator } from '@react-navigation/stack';
+import ProductPage from '../pages/product/ProductPage';
+
 
 const MainComponent = () => {
 
     const homeName = 'Home';
     const authName = 'Profile';
+    const cardDetails = 'ProductPage';
     const runningName = 'Running';
 
     const Tab = createBottomTabNavigator();
@@ -44,7 +48,7 @@ const MainComponent = () => {
             >
                 <Tab.Screen name={homeName} component={Homepage} />
                 <Tab.Screen name={authName} component={Authentificationpage} />
-
+                <Tab.Screen name={cardDetails} component={ProductPage} />
             </Tab.Navigator>
         </NavigationContainer>
 
