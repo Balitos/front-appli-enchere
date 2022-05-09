@@ -3,7 +3,7 @@ import { Button, TextInput, View, Text, StyleSheet, TouchableHighlight, Image } 
 
 import useAuth from '../../store/auth.store';
 
-const Register: React.FC = () => {
+const EditUser: React.FC = () => {
 
     const styles = StyleSheet.create({
         container: {
@@ -59,9 +59,11 @@ const Register: React.FC = () => {
 
     })
 
-    const { register, loginResponse } = useAuth();
+    const { editUser, loginResponse } = useAuth();
 
     const [state, setState] = useState({
+        id: loginResponse.user.id,
+        token: loginResponse.access_token,
         name: '',
         email: '',
         password: '',
@@ -82,6 +84,7 @@ const Register: React.FC = () => {
 
                     <TextInput
                         style={styles.input}
+                        defaultValue={loginResponse.user.name}
                         placeholder="Name"
                         placeholderTextColor="gray"
                         onChangeText={(text) => setState({ ...state, name: text })}
@@ -89,6 +92,7 @@ const Register: React.FC = () => {
 
                     <TextInput
                         style={styles.input}
+                        defaultValue={loginResponse.user.email}
                         placeholder="Email"
                         placeholderTextColor="gray"
                         onChangeText={(text) => setState({ ...state, email: text })}
@@ -111,9 +115,9 @@ const Register: React.FC = () => {
 
                     <TouchableHighlight
                         style={styles.submit}
-                        onPress={() => register(state.name, state.email, state.password, state.passwordConfirmation)}
+                        onPress={() => editUser(state.id, state.name, state.email, state.password, state.passwordConfirmation, state.token)}
                         underlayColor='#fff'>
-                        <Text style={styles.submitText}>Register</Text>
+                        <Text style={styles.submitText}>Edit</Text>
                     </TouchableHighlight>
 
 
@@ -125,4 +129,4 @@ const Register: React.FC = () => {
     )
 };
 
-export default Register;
+export default EditUser;
